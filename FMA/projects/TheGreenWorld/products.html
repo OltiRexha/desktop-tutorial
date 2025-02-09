@@ -27,6 +27,7 @@
         }
 
         .product-card {
+            cursor: pointer;
             background: white;
             border-radius: 15px;
             overflow: hidden;
@@ -88,20 +89,59 @@
         .buy-btn:hover {
             background-color: #45a049;
         }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .cart-btn {
+            background-color: #fff;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+
+        .cart-btn:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .product-description {
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+           -webkit-box-orient: vertical;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Include the same navbar from index.html -->
+   
     
     <div class="products-container">
         <div class="product-card">
             <img src="https://images.unsplash.com/photo-1587583484084-8f9f784ce58b" alt="Japanese Maple" class="product-image">
             <div class="product-info">
                 <h3>Japanese Maple</h3>
-                <p>Elegant ornamental tree with stunning red foliage.</p>
-                <div class="price">
-                    <span>$299.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Elegant ornamental tree with stunning red foliage. Perfect for adding a focal point to your garden with its delicate leaves and vibrant colors throughout the seasons.</p>
+                <div class="price">$299.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Japanese Maple', 299.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Japanese Maple')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -110,10 +150,11 @@
             <img src="https://images.unsplash.com/photo-1578517929167-7edb24743edb" alt="Weeping Willow" class="product-image">
             <div class="product-info">
                 <h3>Weeping Willow</h3>
-                <p>Graceful tree with cascading branches, perfect for waterside planting.</p>
-                <div class="price">
-                    <span>$249.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Graceful tree with cascading branches, perfect for waterside planting. Creates a dramatic and romantic atmosphere in any landscape setting.</p>
+                <div class="price">$249.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Weeping Willow', 249.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Weeping Willow')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -122,10 +163,11 @@
             <img src="https://images.unsplash.com/photo-1615377195567-c711aa846744" alt="Cherry Blossom" class="product-image">
             <div class="product-info">
                 <h3>Cherry Blossom</h3>
-                <p>Beautiful ornamental tree with spectacular spring blooms.</p>
-                <div class="price">
-                    <span>$279.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Beautiful ornamental tree with spectacular spring blooms. Creates a stunning display of pink flowers that transform any space into a magical garden.</p>
+                <div class="price">$279.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Cherry Blossom', 279.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Cherry Blossom')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -134,10 +176,11 @@
             <img src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24" alt="Red Oak" class="product-image">
             <div class="product-info">
                 <h3>Red Oak</h3>
-                <p>Majestic shade tree with excellent fall color.</p>
-                <div class="price">
-                    <span>$349.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Majestic shade tree with excellent fall color. Known for its strength, longevity, and brilliant autumn display of deep red foliage.</p>
+                <div class="price">$349.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Red Oak', 349.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Red Oak')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -146,10 +189,11 @@
             <img src="https://images.unsplash.com/photo-1578507054665-7d6a7a7d0b14" alt="Silver Birch" class="product-image">
             <div class="product-info">
                 <h3>Silver Birch</h3>
-                <p>Elegant tree with distinctive white bark.</p>
-                <div class="price">
-                    <span>$199.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Elegant tree with distinctive white bark. Adds year-round interest with its unique bark texture and golden fall foliage.</p>
+                <div class="price">$199.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Silver Birch', 199.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Silver Birch')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -158,10 +202,11 @@
             <img src="https://images.unsplash.com/photo-1578507054665-7d6a7a7d0b14" alt="Magnolia" class="product-image">
             <div class="product-info">
                 <h3>Magnolia</h3>
-                <p>Classic southern tree with fragrant spring flowers.</p>
-                <div class="price">
-                    <span>$289.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Classic southern tree with fragrant spring flowers. Features large, creamy white blooms and glossy evergreen leaves.</p>
+                <div class="price">$289.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Magnolia', 289.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Magnolia')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -170,10 +215,11 @@
             <img src="https://images.unsplash.com/photo-1578507054665-7d6a7a7d0b14" alt="Colorado Blue Spruce" class="product-image">
             <div class="product-info">
                 <h3>Colorado Blue Spruce</h3>
-                <p>Stunning evergreen with silvery-blue needles.</p>
-                <div class="price">
-                    <span>$319.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Stunning evergreen with silvery-blue needles. Perfect for year-round color and winter interest in your landscape.</p>
+                <div class="price">$319.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Colorado Blue Spruce', 319.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Colorado Blue Spruce')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -182,13 +228,38 @@
             <img src="https://images.unsplash.com/photo-1578507054665-7d6a7a7d0b14" alt="Dogwood" class="product-image">
             <div class="product-info">
                 <h3>Dogwood</h3>
-                <p>Small ornamental tree with beautiful spring flowers.</p>
-                <div class="price">
-                    <span>$229.99</span>
-                    <a href="#" class="buy-btn">Buy Now</a>
+                <p class="product-description">Small ornamental tree with beautiful spring flowers. Offers multi-season interest with spring blooms, summer berries, and fall color.</p>
+                <div class="price">$229.99</div>
+                <div class="buttons-container">
+                    <button class="btn cart-btn" onclick="addToCart('Dogwood', 229.99)">Add to Cart</button>
+                    <button class="btn buy-btn" onclick="buyNow('Dogwood')">Buy Now</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function addToCart(productName, price) {
+            alert(`Added ${productName} ($${price}) to cart!`);
+            // Here you can add actual cart functionality
+        }
+
+        function buyNow(productName) {
+            alert(`Thanks for purchasing ${productName} at The Green World!`);
+            // Here you can add actual purchase functionality
+        }
+
+        // Make entire card clickable to show product details
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent triggering when clicking buttons
+                if (!e.target.classList.contains('btn')) {
+                    const productName = card.querySelector('h3').textContent;
+                    alert(`Viewing details for ${productName}`);
+                    // Here you can add navigation to product detail page
+                }
+            });
+        });
+    </script>
 </body>
 </html>

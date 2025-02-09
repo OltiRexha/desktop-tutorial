@@ -5,150 +5,577 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - The Green World</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .contact-container {
-            margin-top: 80px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
             padding: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            animation: fadeIn 1s ease-out;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(20px);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
         }
 
         .contact-form {
             background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(20px);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        h2 {
+            color: #2c5530;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            position: relative;
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2c5530;
+            position: absolute;
+            left: 1rem;
+            top: 0.8rem;
+            color: #666;
+            transition: all 0.3s ease;
+            pointer-events: none;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            transition: border-color 0.3s ease;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: transparent;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group input:valid,
+        .form-group textarea:valid {
             border-color: #4CAF50;
             outline: none;
         }
 
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group input:valid + label,
+        .form-group textarea:valid + label {
+            top: -0.5rem;
+            left: 0.8rem;
+            font-size: 0.8rem;
+            background: white;
+            padding: 0 0.5rem;
+            color: #4CAF50;
         }
 
-        .submit-btn:hover {
-            background-color: #45a049;
+        .submit-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .submit-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .contact-info-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            animation: fadeInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .contact-info-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .contact-info-item:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .contact-info-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-info-item i {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 2rem;
+            text-align: center;
+        }
+
+        .contact-info-item p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .social-links {
-            margin-top: 2rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .social-links h3 {
-            color: #2c5530;
-            margin-bottom: 1rem;
+            margin-top: 3rem;
         }
 
         .social-icons {
             display: flex;
-            justify-content: center;
             gap: 1.5rem;
+            margin-top: 1rem;
         }
 
         .social-icons a {
             color: #2c5530;
             font-size: 1.8rem;
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: #f5f5f5;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            animation: bounceIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .social-icons a:nth-child(1) { animation-delay: 0.6s; }
+        .social-icons a:nth-child(2) { animation-delay: 0.8s; }
+        .social-icons a:nth-child(3) { animation-delay: 1s; }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover::before {
+            transform: scale(1.5);
         }
 
         .social-icons a:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             color: #4CAF50;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .success-message {
+            animation: slideInUp 0.5s ease-out;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glass morphism effect for form inputs */
+        .form-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 10px;
+            padding: 2px;
+            background: linear-gradient(45deg, #4CAF50, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-group:focus-within::before {
+            opacity: 1;
+        }
+
+        /* Loading animation for submit button */
+        .submit-btn.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .submit-btn.loading::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        .popup-content i {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .popup-content h3 {
+            color: #2c5530;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .popup-content p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-content span {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Include the same navbar from index.html -->
-    
     <div class="contact-container">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <div class="contact-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>123 Green Street, Nature Valley<br>Earth City, EC 12345</p>
+            </div>
+            <div class="contact-info-item">
+                <i class="fas fa-phone"></i>
+                <p>+1 (555) 123-4567</p>
+            </div>
+            <div class="contact-info-item">
+                <i class="fas fa-envelope"></i>
+                <p>hello@thegreenworld.com</p>
+            </div>
+            <div class="social-links">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://instagram.com/thegreenworld" target="_blank" title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/thegreenworld" target="_blank" title="Like us on Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/thegreenworld" target="_blank" title="Connect on LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="contact-form">
-            <h2>Contact Us</h2>
+            <h2>Send us a Message</h2>
             <form id="contactForm">
                 <div class="form-group">
-                    <label for="name">Name</label>
                     <input type="text" id="name" required>
+                    <label for="name">Your Name</label>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
                     <input type="email" id="email" required>
+                    <label for="email">Your Email</label>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
                     <textarea id="message" rows="5" required></textarea>
+                    <label for="message">Your Message</label>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
-        </div>
-
-        <!-- Add this after the contact form div -->
-        <div class="social-links">
-            <h3>Connect With Us</h3>
-            <div class="social-icons">
-                <a href="https://instagram.com/thegreenworld" target="_blank" title="Follow us on Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://facebook.com/thegreenworld" target="_blank" title="Like us on Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://linkedin.com/company/thegreenworld" target="_blank" title="Connect on LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
+            <div class="success-message" id="successMessage">
+                Thank you for your message! We'll get back to you soon.
             </div>
         </div>
     </div>
 
+    <div id="thankYouPopup" class="popup">
+        <div class="popup-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You!</h3>
+            <p>Thanks for reaching out, <span id="userName"></span>!</p>
+            <p>We'll get back to you at <span id="userEmail"></span> soon.</p>
+            <button onclick="closePopup()" class="close-btn">Close</button>
+        </div>
+    </div>
+
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        const contactForm = document.getElementById('contactForm');
+        const popup = document.getElementById('thankYouPopup');
+        const userName = document.getElementById('userName');
+        const userEmail = document.getElementById('userEmail');
+
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Validate inputs
+            if (name.length < 2 || !email.includes('@') || message.length < 10) {
+                alert('Please fill all fields correctly');
+                return;
+            }
+
+            // Update popup content
+            userName.textContent = name;
+            userEmail.textContent = email;
+
+            // Show popup
+            popup.style.display = 'block';
+            
+            // Reset form
+            contactForm.reset();
         });
+
+        function closePopup() {
+            popup.style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popup.style.display === 'block') {
+                closePopup();
+            }
+        });
+
+        // Add smooth scrolling for contact info items
+        document.querySelectorAll('.contact-info-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.add('animate__animated', 'animate__pulse');
+                setTimeout(() => {
+                    item.classList.remove('animate__animated', 'animate__pulse');
+                }, 1000);
+            });
+        });
+
+        // Social media link interactions
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                e.target.classList.add('animate__animated', 'animate__rubberBand');
+            });
+
+            link.addEventListener('mouseleave', (e) => {
+                e.target.classList.remove('animate__animated', 'animate__rubberBand');
+            });
+        });
+
+        // Add this style to handle input errors
+        const style = document.createElement('style');
+        style.textContent = `
+            .input-error {
+                border-color: #ff3333 !important;
+            }
+
+            .input-error + label {
+                color: #ff3333 !important;
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            }
+
+            .form-group input.input-error:focus,
+            .form-group textarea.input-error:focus {
+                box-shadow: 0 5px 15px rgba(255, 51, 51, 0.3);
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
