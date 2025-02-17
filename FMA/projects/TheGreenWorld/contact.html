@@ -416,9 +416,64 @@
                 transform: translate(-50%, -50%) scale(1);
             }
         }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #2c5530;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        /* Update contact-container margin to account for nav bar */
+        .contact-container {
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="The Green World Logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
     <div class="contact-container">
         <div class="contact-info">
             <h2>Get in Touch</h2>
@@ -454,15 +509,15 @@
             <h2>Send us a Message</h2>
             <form id="contactForm">
                 <div class="form-group">
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" >
                     <label for="name">Your Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" required>
+                    <input type="email" id="email">
                     <label for="email">Your Email</label>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" rows="5" required></textarea>
+                    <textarea id="message" rows="5" ></textarea>
                     <label for="message">Your Message</label>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
