@@ -1,0 +1,19 @@
+h1{
+    color: blueviolet;
+    background: rgb(0,37,85);
+    background: linear-gradient(90deg, rgba(0,37,85,1) 13%, rgba(0,5,111,0.80015756302521) 45%, rgba(0,212,255,1) 97%);
+}
+nav{
+    color: rgba(138, 43, 226,0.6);
+    background-color: rgba(0, 0, 0,0.7);
+} 
+p{
+  color: blueviolet;
+  background: rgb(0,37,85);
+  background: linear-gradient(90deg, rgba(0,37,85,1) 13%, rgba(0,5,111,0.80015756302521) 45%, rgba(0,212,255,1) 97%);
+}
+body{
+    background-image: url(image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
